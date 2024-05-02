@@ -1,0 +1,17 @@
+{
+  "name": "isplb",
+  "version": "1.0.0",
+  "description": "chabot isplb",
+  "main": "index.js",
+  "scripts": {
+    "dev": "env $(cat .env) node ./database/getCursos.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.9.7",
+    "venom-bot": "^5.1.0"
+  }
+}

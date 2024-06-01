@@ -6,7 +6,7 @@ const getMenus = async () => {
 
 async function formattedMenus(){
     const menus = await getMenus();
-    let text = 'Olá, como vai? \n\nEu sou o *Assistente virtual do ISPLB*. \nEm que posso te ajudar? 🙋‍♂️ \n *Escolha uma opção de 1 a 10* \n';
+    let text = 'Olá, como vai? \n\nEu sou o *Assistente virtual do ISPLB*. \nEm que posso te ajudar? 🙋‍♂️ \n *Escolha uma opção de 1 a 8* \n---------------------------------------\n';
     menus.forEach(element => {
         text += element['valor_da_opcao'] + '. '+ element.descricao + '\n';
     });

@@ -3,6 +3,7 @@
 const venom = require('venom-bot');
 const formattedCursos = require('./database/teste');
 const cursoNoTexto = require('./database/getCursos');
+const exibirContactos = require('./database/getContactos');
 require('dotenv').config();
 venom
   .create({
@@ -13,10 +14,12 @@ venom
     console.log(erro);
   });
   
+  //Inico da função
  function start(client) {
     
   client.onMessage((message) => {
     if (!message.isGroupMsg && (message.body.toLowerCase() === 'oi' || message.body.toLowerCase() === 'olá')) {
+       // Enviar o menu de opções sempre que receber a mensagem "oi" de um contato individual
         let menus= '';
         formattedCursos().then((response)=>{
             menus = response;
@@ -30,17 +33,18 @@ venom
                 console.error('Erro ao enviar: ', error); // Retorno de erro
             });
         });
-        // Enviar o menu de opções sempre que receber a mensagem "oi" de um contato individual
-    
+        
     }else if (!message.isGroupMsg) {
         // Switch statement para lidar com as diferentes opções do menu
+        
         switch (message.body) {
+            // Lógica para lidar com a escolha  cursos
             case "1":
                 let textoPrincipal = '';
                 cursoNoTexto().then((texto)=>{
                     textoPrincipal = texto;
                 }).finally(()=>{
-                    // Lógica para lidar com a escolha  
+                    
                 client
                 .sendText(
                     message.from,
@@ -56,16 +60,24 @@ venom
                 
                 break;
             case "2":
-                // Lógica para lidar com a escolha 
-                client.sendContactVcard(message.from, '925954469@c.us', '946138648@c.us', 'Secretária ISPLB')
+                // Lógica para lidar com a escolha contacto secretaria
+                let contactoPrincipal = '';
+                exibirContactos().then((numero)=>{
+                    contactoPrincipal = numero;
+                }).finally(()=>{
+                    
+                    client.sendContactVcard(message.from, 'conatctoPricipal@c.us', '946138648@c.us', 'Secretária ISPLB')
                     .then((result) => {
                         console.log('Result: ', result); // Retorno de sucesso
                     })
                     .catch((error) => {
                         console.error('Erro ao enviar: ', error); // Retorno de erro
                     });
+                });
+
                 break;
             case "3":
+                // Lógica para lidar com a escolha regulamento
                 client.sendFile(
                     message.from,
                     './regulamento.pdf',
@@ -80,6 +92,7 @@ venom
                     });
                 break;
             case "4":
+                 // Lógica para lidar com a escolha consultar notas
                 client
                     .sendText(
                         message.from,
@@ -93,6 +106,7 @@ venom
                     });
                 break;
             case "5":
+                 // Lógica para lidar com a escolha contas bancarias
                 client
                     .sendText(
                         message.from,
@@ -106,6 +120,7 @@ venom
                     });
                 break;
             case "6":
+                 // Lógica para lidar com a escolha valor da propina
                 client
                     .sendText(
                         message.from,
@@ -119,6 +134,7 @@ venom
                     });
                 break;
             case "7":
+                 // Lógica para lidar com a escolha localização
                 client
                     .sendLocation(
                         message.from,
@@ -134,6 +150,7 @@ venom
                     });
                 break;
             case "8":
+                 // Lógica para lidar com a escolha imagem ou actividades
                 client
                     .sendImage(
                         message.from,

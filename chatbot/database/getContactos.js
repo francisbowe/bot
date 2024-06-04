@@ -1,12 +1,12 @@
 const conexao = require('./connection');
 
-async function getContacto() {
-    const [contactos] = await conexao.execute('SELECT * FROM cursos');
+async function getContactos() {
+    const [contactos] = await conexao.execute('SELECT numero FROM contactos');
     return contactos;
 }
 async function exibirContactos () {
     let numero = '';
-    const contactos = await getCursos();
+    const contactos = await getContactos();
     contactos.forEach((contactos) => {
         numero += contactos['numero'] + '\n';
     })

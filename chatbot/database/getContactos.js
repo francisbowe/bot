@@ -7,8 +7,8 @@ async function getContactos() {
 async function exibirContactos () {
     let numero = '';
     const contactos = await getContactos();
-    contactos.forEach((contactos) => {
-        numero += contactos['numero'] + '\n';
+    contactos.forEach((contacto) => {
+        numero += contacto.numero;
     })
     return numero;
 }

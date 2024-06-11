@@ -64,9 +64,10 @@ venom
                 let contactoPrincipal = '';
                 exibirContactos().then((numero)=>{
                     contactoPrincipal = numero;
+                    contactoPrincipal += '@c.us';
                 }).finally(()=>{
                     
-                    client.sendContactVcard(message.from, 'conatctoPricipal@c.us', '946138648@c.us', 'Secretária ISPLB')
+                    client.sendContactVcard(message.from, contactoPrincipal, '946138648@c.us', 'Secretária ISPLB')
                     .then((result) => {
                         console.log('Result: ', result); // Retorno de sucesso
                     })
@@ -94,16 +95,18 @@ venom
             case "4":
                  // Lógica para lidar com a escolha consultar notas
                 client
-                    .sendText(
-                        message.from,
-                        "Infelizmente, a opção para consultar notas não está disponível no momento."
-                    )
-                    .then((result) => {
-                        console.log("Result: ", result); // Retorno de sucesso
-                    })
-                    .catch((error) => {
-                        console.error("Erro ao enviar mensagem: ", error); // Retorno de erro
-                    });
+                 .sendLinkPreview(
+                   '000000000000@c.us',
+                   'https://www.youtube.com/watch?v=V1bFr2SWP1I',
+                   'Kamakawiwo ole'
+                 )
+                 .then((result) => {
+                   console.log('Result: ', result); //return object success
+                 })
+                 .catch((erro) => {
+                   console.error('Error when sending: ', erro); //return object error
+                 });
+               
                 break;
             case "5":
                  // Lógica para lidar com a escolha contas bancarias
@@ -168,7 +171,7 @@ venom
             default:
                 // Opção inválida
                 client
-                    .sendText(message.from, 'Opção inválida. Por favor, escolha uma opção válida. \n\n *De 1 a 10* \n-----------------------------------\n1. Cursos Lecionado no ISPLB\n2. Contacto da Secretária\n3. Conhecer os regulamentos do ISPLB\n4. Consultar notas\n5. Contas Bancárias para pagar a propina\n6. Valor da Propina\n7. Quer saber a nossa localização\n8. Imagem do Edifício ISLPB\n')
+                    .sendText(message.from, 'Opção inválida. Por favor, escolha uma opção válida. \n\n *De 1 a 10* \n-----------------------------------\n1. Cursos Lecionado no ISPLB\n2. Contacto da Secretária\n3. Conhecer os regulamentos do ISPLB\n4. Consultar notas\n5. Contas Bancárias para pagar a propina\n6. Valor da Propina\n7. Quer saber a nossa localização\n8. Emulamento ISPLB\n')
                     .then((result) => {
                         console.log('Result: ', result); // Retorno de sucesso
                     })
@@ -180,3 +183,4 @@ venom
     }
   });
 }
+

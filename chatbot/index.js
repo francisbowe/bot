@@ -110,17 +110,23 @@ venom
                 break;
             case "5":
                  // Lógica para lidar com a escolha contas bancarias
-                client
-                    .sendText(
-                        message.from,
-                        "No ISPLB a propina está estipulada nos seguintes moldes \nPara os Alunos do 1º ano  \nPara os Alunos do 2º, 3º, 4º, 5º ano propina de 42.000kz "
-                    )
-                    .then((result) => {
-                        console.log("Result: ", result); // Retorno de sucesso
-                    })
-                    .catch((error) => {
-                        console.error("Erro ao enviar mensagem: ", error); // Retorno de erro
-                    });
+                 let textoConta = '';
+                 contasBanco().then((conta)=>{
+                     textoConta = conta;
+                 }).finally(()=>{
+                     
+                 client
+                 .sendText(
+                     message.from,
+                     textoConta
+                 )
+                 .then((result) => {
+                     console.log("Result: ", result); // Retorno de sucesso
+                 })
+                 .catch((error) => {
+                     console.error("Erro ao enviar mensagem: ", error); // Retorno de erro
+                 });
+                 });
                 break;
             case "6":
                  // Lógica para lidar com a escolha valor da propina

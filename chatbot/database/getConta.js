@@ -5,11 +5,11 @@ async function getContas() {
     return contas;
 }
 async function contasBanco () {
-    let texto = '*Estas são as contas bancarias do ISPLB*\n';
+    let conta = '*Estas são as contas bancarias do ISPLB*\n';
     const contas = await getContas();
     contas.forEach((contas) => {
-        texto += contas['banco'] + ' - ' + contas.iban + '\n';
+        conta += contas['banco'] + ' - ' + contas.iban + '\n';
     })
-    return texto;
+    return conta;
 }
 module.exports = contasBanco;

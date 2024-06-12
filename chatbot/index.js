@@ -95,7 +95,7 @@ venom
             case "4":
                  // Lógica para lidar com a escolha consultar notas
                 client
-                 .sendLinkPreview(
+                 .sendLinkPreview( message.from,
                    '000000000000@c.us',
                    'https://www.youtube.com/watch?v=V1bFr2SWP1I',
                    'Kamakawiwo ole'
@@ -131,16 +131,23 @@ venom
             case "6":
                  // Lógica para lidar com a escolha valor da propina
                 client
-                    .sendText(
-                        message.from,
-                        "Infelizmente, a opção para consultar o valor da propina não está disponível no momento."
-                    )
-                    .then((result) => {
-                        console.log("Result: ", result); // Retorno de sucesso
-                    })
-                    .catch((error) => {
-                        console.error("Erro ao enviar mensagem: ", error); // Retorno de erro
-                    });
+                let textoPropina = '';
+                cursoPropina().then((propina)=>{
+                    textoPropina = propina;
+                }).finally(()=>{
+                    
+                client
+                .sendText(
+                    message.from,
+                    textoPropina
+                )
+                .then((result) => {
+                    console.log("Result: ", result); // Retorno de sucesso
+                })
+                .catch((error) => {
+                    console.error("Erro ao enviar mensagem: ", error); // Retorno de erro
+                });
+                });
                 break;
             case "7":
                  // Lógica para lidar com a escolha localização

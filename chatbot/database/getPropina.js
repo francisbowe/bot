@@ -5,7 +5,7 @@ async function getContas() {
     return propinas;
 }
 async function cursoPropina () {
-    let propina = '*As propinas no ISPLB se baseam nos seguintes moldes*\n';
+    let propina = '*As propinas no ISPLB baseam-se nos seguintes moldes*\n';
     const propinas = await getContas();
     propinas.forEach((propinas) => {
         propina += propinas['ano'] + ' - ' + propinas.preco + '\n';

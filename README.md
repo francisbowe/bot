@@ -98,4 +98,4 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
 
-Esse README é um ponto de partida! Se quiser incluir mais detalhes ou informações específicas, só avisar.
+

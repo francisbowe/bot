@@ -1,5 +1,3 @@
-Aqui está um modelo de **README** para o seu projeto de chatbot com WhatsApp, baseado no código que você me enviou. Você pode usá-lo para documentar o seu repositório no GitHub:
-
 ---
 
 # Chatbot ISPLB - WhatsApp Integration
